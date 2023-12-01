@@ -2,16 +2,19 @@ class_name Day
 extends RefCounted
 
 
-func solve(part: int, input: String) -> String:
+var input: PackedStringArray
+
+func solve(part: int, p_input: String) -> String:
+	input = p_input.split("\n")
 	match part:
-		1: return solve_first(input)
-		2: return solve_second(input)
+		1: return solve_first()
+		2: return solve_second()
 	return "ERROR"
 
 
-func solve_first(input: String) -> String:
-	return input
+func solve_first() -> String:
+	return ""
 
 
-func solve_second(input: String) -> String:
-	return input
+func solve_second() -> String:
+	return ""

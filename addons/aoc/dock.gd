@@ -12,11 +12,11 @@ const PATH_TEMPLATE_OUTPUT := "res://data-outputs/%02d-part-%d.txt"
 const SCRIPT_TEMPLATE = """extends Day
 
 
-func solve_first(input: String) -> String:
+func solve_first() -> String:
 	return "TODO: Implemented Part 1"
 
 
-func solve_second(input: String) -> String:
+func solve_second() -> String:
 	return "TODO: Implemented Part 2"
 """
 
