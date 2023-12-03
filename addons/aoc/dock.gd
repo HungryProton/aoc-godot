@@ -13,11 +13,11 @@ const SCRIPT_TEMPLATE = """extends Day
 
 
 func solve_first() -> String:
-	return "TODO: Implemented Part 1"
+	return "TODO: Implement Part 1"
 
 
 func solve_second() -> String:
-	return "TODO: Implemented Part 2"
+	return "TODO: Implement Part 2"
 """
 
 

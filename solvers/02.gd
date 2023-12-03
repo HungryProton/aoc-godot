@@ -30,15 +30,13 @@ func solve_second() -> String:
 			for i in 3:
 				if s[i] > max[i]:
 					max[i] = s[i]
-		
 
 		sum += max.x * max.y * max.z
-		
+
 	return str(sum)
 
 
 func get_data(line: String) -> GameData:
-	print(line)
 	var data := GameData.new()
 
 	var tokens := line.split(":")
