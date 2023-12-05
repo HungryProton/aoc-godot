@@ -20,6 +20,7 @@ func solve_first() -> String:
 
 
 func solve_second() -> String:
+	var time_start = Time.get_ticks_msec()
 	_parse_input()
 	_maps.reverse()
 	
@@ -33,28 +34,26 @@ func solve_second() -> String:
 				smallest_location = range.dst_start
 	
 	print("Searching from ", smallest_location, " to ", highest_location)
-	
-	# Do a binary search
-	var middle: int = -1
-	var left := smallest_location
-	var right := highest_location
 
-	while left <= right:
-		middle = floori((left + right) / 2.0)
-		printt(left, right, middle)
-		var seed_value := middle
-		for m in _maps:
-			seed_value = m.remap_value_reverse(seed_value)
-		if _is_seed(seed_value):
-			print("is seed")
-			right = middle - 1
-		else:
-			print("not seed")
-			left = middle + 1
-		print("closest ", middle)
-		print(" ")
+	# Check the full range every X elements. Once you find a seed, stop and
+	# try again with that location as the upper boundary until it converge.
+	var closest := highest_location
+	var previous := -1
 	
-	return str(middle)
+	while closest != previous:
+		previous = closest
+		var chunk_count: int = min(10000000, closest) # TMP - magic number that could definitely be lower
+		for chunk in chunk_count:
+			var idx := floori(chunk * max(1, (closest / chunk_count)))
+			var seed_value := idx
+			for m in _maps:
+				seed_value = m.remap_value_reverse(seed_value)
+			if _is_seed(seed_value):
+				closest = idx
+				break
+	
+	print("Time: ", (Time.get_ticks_msec() - time_start) / 1000.0 )
+	return str(closest)
 
 
 func _is_seed(value) -> bool:
