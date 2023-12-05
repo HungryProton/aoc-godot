@@ -28,8 +28,7 @@ func solve_second() -> String:
 				if next_idx >= duplicates.size():
 					break
 				duplicates[next_idx] += 1
-	
-	print(duplicates)
+
 	var total_cards := 0
 	for d in duplicates:
 		total_cards += d
